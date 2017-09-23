@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style>
+	img{
+		width: 200px;
+		height:200px;
+	}	
+	</style>
+	<meta charset="UTF-8">
+	<title>Shop Example</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+	<script src="angular.min.js"></script>
+</head>
+<body ng-app>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Navbar</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#">Disabled</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input ng-model="search.price" class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
+
+
+<div class="container">
+	
+
+
+<h1>Shop App</h1>
+<input type="checkbox" ng-init="rev=false" 
+ng-model="rev"> {{rev}}Asc/Desc
+Sort <select ng-model="sort">
+
+<option>id</option>
+	<option>name</option>
+	<option>price</option>
+</select>
+
+<input type="text" ng-model="search.price">
+	<ul class="list-group" ng-init="data={'mobiles':[{'id':3,'name':'Samsung ','price':30000,'shipping':'India','vendor':'Samsung Stores','inStock':'Y','image':'https://staticshop.o2.co.uk/product/images/samsung_galaxy_s8_64gb_midnight_black_front_sku_header.png?cb=b1e52dd9252967784a9580c9de7ea7e3'},{'id':2,'name':'Nokia ','price':10000,'shipping':'India','vendor':'Nokia Stores','inStock':'N','image':'http://cdn-a2.buildabazaar.com/img/othe/5501214/75/86/nokialumia630dualsimyellow.jpg.784cf17586.999x200x200.jpg'},{'id':1,'name':'Apple 5s','price':20000,'shipping':'China','vendor':'Apple Stores','inStock':'Y','image':'https://assets.ec.quoracdn.net/main-thumb-t-965-200-eskvgzdvwmrcnhylzyjaqfmpsjlrazhl.jpeg'}]}
+">
+		<li class="list-group-item" ng-repeat="mobile in data.mobiles|filter:search|orderBy:sort:rev">
+		<img src="{{mobile.image}}">
+			{{mobile.name|uppercase}} &nbsp; {{mobile.price|currency:'&#8377;'}}
+		</li>
+	</ul>
+	
+	</div>
+	
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+</body>
+</html>
